@@ -1,0 +1,27 @@
+package view_user
+
+import (
+	"go_templ/view/layout"
+	"go_templ/view/components"
+	"go_templ/model"
+)
+
+func __user(c context.Context) string {
+	user, ok := c.Value("user").(string)
+	if !ok {
+		return ""
+	}
+
+	return user
+}
+
+templ Show(user model.User) {
+	@layout.Base() {
+		<h1>Hello {user.Email} : from the context <strong>{__user(ctx)}</strong></h1>
+		@components.Input("text", "hoho")
+
+		<button hx-post="/clicked" hx-swap="outerHTML">
+    		Click Me
+  		</button>
+	}
+}

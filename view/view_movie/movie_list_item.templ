@@ -1,0 +1,9 @@
+package view_movie
+
+import (
+	"go_templ/model"
+)
+
+templ MovieListItem(movie model.Movie) {
+    <li class="list-group-item bg-primary text-white">{ movie.Title } { movie.Director }</li>
+}
